@@ -5,7 +5,7 @@ import Entities.invertor;
 from telebot import types
 
 bot = telebot.TeleBot('7852025083:AAE8501zgNwlrCrL4MrTb36OzNzhgE8RLls');
-dbctx = dbcontext.DbContext('https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive', 'conf\\credentials.json')
+dbctx = dbcontext.DbContext('https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive', '')
 invertors = []
 batteries = []
 
