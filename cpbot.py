@@ -5,7 +5,7 @@ import Entities.invertor;
 from telebot import types
 
 bot = telebot.TeleBot('7852025083:AAE8501zgNwlrCrL4MrTb36OzNzhgE8RLls');
-dbctx = dbcontext.DbContext('https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive', '')
+dbctx = dbcontext.DbContext('https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive', 'conf\\credentials.json')
 invertors = []
 batteries = []
 
@@ -17,10 +17,11 @@ def start(message):
         bot.send_message(message.from_user.id, "Вкажіть ваше ім'я");
         bot.register_next_step_handler(message, get_name);
 
-def get_keyboard(entities, entType):
+def get_keyboard(entities):
     keyboard = types.InlineKeyboardMarkup();
     for ent in entities:
-        key = types.InlineKeyboardButton(text=ent.Name, callback_data='entType|' + ent.Id); #кнопка «Да»
+        endType = 'entType|' + ent.id;
+        key = types.InlineKeyboardButton(text=ent.Name, callback_data=endType); #кнопка «Да»
         keyboard.add(key);
     return keyboard;
 
@@ -50,17 +51,5 @@ def get_invertor(message): #отримуємо інвертор
 def get_battery(message): #отримуємо батарею
     global name;
     name = message.text;
-
-@bot.callback_query_handler(func=lambda call: True)
-def callback_worker(call):
-    if call.data is  None:
-         bot.send_message(call.data.message.from_user.id, 'Дані не вибрані');
-    else:
-        datas = call.data.split('|');
-        if datas[0] == 'inv':
-            
-        
-       
-
 
 bot.polling(none_stop=True, interval=0)
