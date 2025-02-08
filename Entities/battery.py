@@ -1,9 +1,11 @@
 import json
 
-class Battery:
+from Entities.Entity import Entity
+
+class Battery(Entity):
 
     def __init__(self, id, name, price, link):
-        self.Id = id,
+        self.Id = int(id),
         self.Name = name
         self.Price = price
         self.Link = link

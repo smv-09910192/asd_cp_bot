@@ -1,9 +1,11 @@
 import json
 
-class Invertor:
+from Entities.Entity import Entity
+
+class Invertor(Entity):
 
     def __init__(self, id, name, price, link):
-        self.id = id
+        self.Id = int(id)
         self.Name = name
         self.Price = price
         self.Link = link
