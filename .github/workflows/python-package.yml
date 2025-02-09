@@ -37,5 +37,5 @@ jobs:
     - name: Deploy to AWS Lambda
       env:
         AWS_ACCESS_KEY_ID: ${{ env.AWS_CLIENT_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secret.AWS_CLIENT_SECRET }}
+        AWS_SECRET_ACCESS_KEY: ${{ env.AWS_CLIENT_SECRET }}
       run: serverless deploy
